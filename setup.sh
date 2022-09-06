@@ -36,8 +36,7 @@ install() {
   for tool in service_ping server_fingerprinter device_identification traffic_analyzer resource_listing protocol_fuzzer client_proto_fuzzer vulnerability_tester client_vuln_tester amplifier_detector active_scanner
   do
     echo '#!/usr/bin/env sh' > $APM_PKG_BIN_DIR/cotopaxi.$tool
-    echo -ne "$APM_PKG_INSTALL_DIR/python/bin/python3.8 -m cotopaxi.$tool " >> $APM_PKG_BIN_DIR/cotopaxi.$tool
-    echo '"$@"' >> $APM_PKG_BIN_DIR/cotopaxi.$tool
+    echo "$APM_PKG_INSTALL_DIR/python/bin/python3.8 -m cotopaxi.$tool \"\$@\"" >> $APM_PKG_BIN_DIR/cotopaxi.$tool
     chmod +x $APM_PKG_BIN_DIR/cotopaxi.$tool
   done
 
